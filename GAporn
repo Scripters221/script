@@ -152,4 +152,4 @@ end)
 end
 end
 local queueonteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
-queueonteleport(loadstring(game:HttpGet("https://raw.githubusercontent.com/Scripters221/script/main/GAporn"))())
+queueonteleport('loadstring(game:HttpGet("https://raw.githubusercontent.com/Scripters221/script/main/GAporn"))()')

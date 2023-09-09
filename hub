@@ -1,5 +1,6 @@
-if game.PlaceId == 6284583030 and game.Players.LocalPlayer.Name == "madein_ohio3" then
+
 repeat task.wait() until game:IsLoaded()
+if game.PlaceId == 6284583030 and game.Players.LocalPlayer.Name == "madein_ohio3" then
 local GC = getconnections or get_signal_cons
 	if GC then
 		for i,v in pairs(GC(game.Players.LocalPlayer.Idled)) do

@@ -11,12 +11,23 @@ local Invoke, Fire = Network.Invoke, Network.Fire
 debug.setupvalue(Client.Network.Invoke, 1, function() return true end)
 debug.setupvalue(Client.Network.Fire, 1, function() return true end)
 local Library = require(game:GetService("ReplicatedStorage"):WaitForChild("Framework"):WaitForChild("Library"))
-local vu = game:GetService("VirtualUser")
-game:GetService("Players").LocalPlayer.Idled:connect(function()
-   vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-   wait(1)
-   vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-end)
+local GC = getconnections or get_signal_cons
+	if GC then
+		for i,v in pairs(GC(game.Players.LocalPlayer.Idled)) do
+			if v["Disable"] then
+				v["Disable"](v)
+			elseif v["Disconnect"] then
+				v["Disconnect"](v)
+			end
+		end
+	else
+		game.Players.LocalPlayer.Idled:Connect(function()
+			local VirtualUser = game:GetService("VirtualUser")
+			VirtualUser:CaptureController()
+			VirtualUser:ClickButton2(Vector2.new())
+		end) end if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
 if game.Players.LocalPlayer.Name == "BoriGHJIK_2" then
 while task.wait() do
 Invoke("Buy Egg","Golden Rock Egg",false,true) end
